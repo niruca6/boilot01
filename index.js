@@ -6,8 +6,13 @@ const client = new Client({
   intents: Object.values(GatewayIntentBits).reduce((a, b) => a | b)
 });
 
-let msg;
-let lastMsg;
+const http = require('http');
+
+// UptimeRobotからのアクセスを受け付けるための簡易サーバー
+http.createServer((req, res) => {
+  res.write("Bot is alive!");
+  res.end();
+}).listen(8080); // Renderはデフォルトでポート8080などをバインドします
 
 // Gemini APIの初期化
 const ai = new GoogleGenAI({ apiKey: geminiApiKey });
