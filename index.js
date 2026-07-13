@@ -28,7 +28,7 @@ client.on("messageCreate", async msg => {
       const fetchedMessages = await msg.channel.messages.fetch({ limit: 100 });
       
       const now = new Date();
-      const twoHoursAgo = now.getTime() - (2400 * 60 * 60 * 1000); // 2時間前のタイムスタンプ
+      const twoHoursAgo = now.getTime() - (3 * 60 * 60 * 1000); // 3時間前のタイムスタンプ
 
       // 条件に合うメッセージをフィルタリング（Botを除外し、2時間以内、新しい順）
       const recentMessages = Array.from(fetchedMessages.values()).filter(m => {
@@ -128,7 +128,6 @@ ${textA}
       console.log("-----CATCHED FEEDBACK (Pprompt 5)-----");
       console.log(replyText);
       console.log("-----END FEEDBACK-----");
-      return; //停止
 
       if (replyText.length > 2000) {
         // 2000文字を超える場合は分割して送信
