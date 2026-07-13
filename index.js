@@ -116,9 +116,9 @@ ${textB}
 ${textA}
 `;
 
-      // Gemini 3.5 Flash モデルを呼び出し
+      // Gemini 2.5 Flash モデルを呼び出し
       const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-2.5-flash',
         contents: prompt,
       });
 
