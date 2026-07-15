@@ -88,11 +88,14 @@ client.on("messageCreate", async msg => {
       const prompt = `
 You are an excellent native English teacher.
 Please analyze the English chat history from Discord and provide corrections and advice to help make the expressions more natural.
+Students are junior or high school students or university students.
 
 [Guidelines]
 - Identify the English chat messages within the conversation and give advice for any grammatical errors or ways to use more natural phrasing (such as slang or idioms).
 - Provide clear, friendly explanations without using overly complex vocabulary.
+- Make sure to figure out what students are trying to say in their chat.
 - Every advice should be short and like real chat.
+- You can give advice related to the contents of the conservation.
 - There should be no greeting or introduction.
 - Ignore any messages that are not in English or contain meaningless strings of characters.
 
@@ -107,12 +110,13 @@ your comment
 your comment
 
 ✨POINT
-summary if need
+bulleted summary if need
 
 [Text decoration formats]
 **bold**
 __underline__
 > blockquote
+~~strikethrough~~
 
 [Chat for corrections]
 ${textB}
@@ -130,7 +134,12 @@ ${textA}
       // 7. 応答を返信する（Discordの2000文字制限に配慮し、長ければ分割）
       const replyText = response.text;
 
-      console.log("-----CATCHED FEEDBACK (Pprompt 5)-----");
+      console.log("-----SENT PROMPT-----");
+      console.log(prompt);
+      console.log("-----PROMPT END-----");
+
+
+      console.log("-----CATCHED FEEDBACK (Prompt 5)-----");
       console.log(replyText);
       console.log("-----END FEEDBACK-----");
 
@@ -146,7 +155,7 @@ ${textA}
 
     } catch (error) {
       console.error("エラーが発生しました:", error);
-      await msg.reply("An error occured. please try again!");
+      await msg.reply("An error occured. please try again!"+error);
     }
   }
 });
